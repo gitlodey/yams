@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('search');
+  this.route('movie', { path: '/movie/:movie_id' });
 });
 
 export default Router;

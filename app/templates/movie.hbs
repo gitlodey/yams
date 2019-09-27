@@ -1,0 +1,45 @@
+<div class="wrapper-center">
+  <div class="movie">
+    <div class="movie__poster">
+      {{#if model.poster_path}}
+        <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{model.poster_path}}" />
+      {{else}}
+        <img src="https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-w185-v2.png" />
+      {{/if}}
+    </div>
+    <div class="movie__title"> {{model.title}} ({{model.year}}) </div>
+    <div class="movie__rating">
+      {{model.vote_average}}
+        <BsProgress as |pg|>
+            <pg.bar @value={{model.vote_average}} />
+        </BsProgress>
+    </div>
+
+    <div class="movie__plot">
+      <h3>Plot</h3>
+      {{model.overview}}
+    </div>
+
+    {{#if model.genres}}
+      <div class="movie__genres">
+        <ul>
+          {{#each model.genres as |genre|}}
+          <li>{{genre.name}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    <div class="movie__extra">
+      <strong>Status: </strong><span>{{model.status}}</span>
+    </div>
+
+    <div class="movie__extra">
+      <strong>Budget: </strong><span>{{#if model.budget}}{{model.budget}}{{else}}&mdash;{{/if}}</span>
+    </div>
+
+    <div class="movie__extra">
+      <strong>Runtime: </strong><span>{{#if model.runtime.hours}}{{model.runtime.hours}}h {{/if}}{{model.runtime.minutes}}m</span>
+    </div>
+  </div>
+</div>
