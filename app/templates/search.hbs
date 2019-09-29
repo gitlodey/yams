@@ -1,10 +1,25 @@
 {{component 'search-field' search=( action "searchMovie")}}
 
+{{#if model.isMultiplePages}}
+    {{component 'pagination-field' 
+        currentPage=model.currentPage 
+        totalPages=model.totalPages
+        changePage=( action 'changePage')
+    }}
+{{/if}}
 
 <div class="card-columns card-container">
-    {{#if model}}
-        {{#each model as |item|}}
-            {{component 'movie-card' item=item clickOnCard=(action 'clickHandler')}}
+    {{#if model.movies}}
+        {{#each model.movies as |movie|}}
+            {{component 'movie-card' item=movie clickOnCard=(action 'clickHandler')}}
         {{/each}}
     {{/if}}
 </div>
+
+{{#if model.isMultiplePages}}
+    {{component 'pagination-field' 
+        currentPage=model.currentPage 
+        totalPages=model.totalPages
+        changePage=( action 'changePage')
+    }}
+{{/if}}

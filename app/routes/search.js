@@ -14,31 +14,33 @@ export default Route.extend({
     },
 
     model(params) {
-        let data = {
-            api_key: this.apiKey,
-            query: params.query ? params.query : 'mortal',
+        console.log('params', params);
+        if (!params.query) {
+            this.transitionTo('/');
         }
 
+        let data = {
+            api_key: this.apiKey,
+            query: params.query,
+            page: params.page ? params.page: 1,
+        }
+        
         return $.ajax({
             method: "GET",
             url: this.url,
             data
           })
-        .then((res) => {
-            console.log('>>>', res);
-            //debugger;
-            //return this.infinity(res.results);
-            return res.results;
+        .then((res) => { 
+            return {
+                movies: res.results,
+                currentPage: res.page,
+                isMultiplePages: res.total_pages > 1,
+                totalPages: res.total_pages,
+            };
         })
         .catch((e) => {
             console.log('error', e);
+            this.transitionTo('/');
         });
     },
-    actions: {
-        cliackHandler() {
-            debugger;
-        },
-
-        
-    }
 });

@@ -8,6 +8,9 @@ export default Controller.extend({
         },
         searchMovie(queryParams) {
             this.transitionToRoute(`/search?page=${queryParams.page}&query=${queryParams.query}`);
+        },
+        changePage(page) {
+            this.transitionToRoute(`/search?page=${page}&query=${this.query}`);
         }
     }
 });
