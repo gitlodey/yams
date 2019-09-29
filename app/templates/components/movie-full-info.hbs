@@ -1,0 +1,48 @@
+<div class="movie">
+    <div class="movie__poster">
+      {{#if movie.poster_path}}
+        <img class="movie-art" src="https://image.tmdb.org/t/p/original{{movie.backdrop_path}}" />
+      {{else}}
+        <img src="https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-w185-v2.png" />
+      {{/if}}
+    </div>
+    <div class="movie__title"> {{movie.title}} ({{movie.year}}) </div>
+    <div class="movie__rating">
+        <StarRating @rating={{movie.vote_average}} 
+                    @numStars=10
+                    @anyPercent=true
+                    @readOnly=true
+                    @fillColor='#000' />
+      {{movie.vote_average}}
+        <BsProgress as |pg|>
+            <pg.bar @value={{movie.vote_average}} />
+        </BsProgress>
+    </div>
+
+    <div class="movie__plot">
+      <h3>Plot</h3>
+      {{movie.overview}}
+    </div>
+
+    {{#if movie.genres}}
+      <div class="movie__genres">
+        <ul>
+          {{#each movie.genres as |genre|}}
+          <li>{{genre.name}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    <div class="movie__extra">
+      <strong>Status: </strong><span>{{movie.status}}</span>
+    </div>
+
+    <div class="movie__extra">
+      <strong>Budget: </strong><span>{{#if movie.budget}}{{movie.budget}}{{else}}&mdash;{{/if}}</span>
+    </div>
+
+    <div class="movie__extra">
+      <strong>Runtime: </strong><span>{{#if movie.runtime.hours}}{{movie.runtime.hours}}h {{/if}}{{movie.runtime.minutes}}m</span>
+    </div>
+  </div>

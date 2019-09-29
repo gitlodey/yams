@@ -10,6 +10,7 @@ export default Route.extend({
           "api_key": "72b56103e43843412a992a8d64bf96e9"
         }
     }).then(function (data) {
+        console.log('raw data', data);
       // prepare & beautify data
       var hours = ~~(data.runtime / 60);
       var minutes = data.runtime - hours * 60;

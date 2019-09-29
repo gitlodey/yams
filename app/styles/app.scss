@@ -1,2 +1,10 @@
 
 @import "ember-bootstrap/bootstrap";
+@import "components/search.scss";
+
+
+.movie-art {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
