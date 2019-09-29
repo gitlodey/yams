@@ -28,6 +28,10 @@ export default Component.extend({
 
     actions: {
         clickHandler(page) {
+            window.scrollTo({
+                top: 0,
+                behaviour: 'smooth',
+            });
             this.changePage(page);
         }
     }
