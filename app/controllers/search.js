@@ -5,6 +5,9 @@ export default Controller.extend({
     actions: {
         clickHandler(id) {
             this.transitionToRoute(`/movie/${id}`);
+        },
+        searchMovie(queryParams) {
+            this.transitionToRoute(`/search?page=${queryParams.page}&query=${queryParams.query}`);
         }
     }
 });

@@ -4,6 +4,15 @@ export default Route.extend({
     url: 'https://api.themoviedb.org/3/search/movie',
     apiKey: "72b56103e43843412a992a8d64bf96e9",
 
+    queryParams: {
+        query: {
+            refreshModel: true
+        },
+        page: {
+            refreshModel: true
+        }
+    },
+
     model(params) {
         let data = {
             api_key: this.apiKey,
