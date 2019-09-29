@@ -18,7 +18,7 @@ export default Component.extend({
 
     actions: {
         clickHandler() {
-            debugger;
+            this.clickOnCard(this.item.id);
         }
     }
 });
