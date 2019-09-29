@@ -1,0 +1,15 @@
+.card-container {
+    margin-bottom: 20px;
+
+    .card {
+        cursor: pointer;
+        height: 100%;
+        transition: 0.2s ease box-shadow;
+        filter: grayscale(40%);
+
+        &:hover {
+            filter: grayscale(0);
+            box-shadow: 5px 5px 5px -3px rgba(235,235,235,1);
+        }
+    }
+}
