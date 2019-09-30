@@ -15,7 +15,6 @@ export default Route.extend({
     },
 
     model(params) {
-        const store = this.get('store');
 
         if (!params.query) {
             this.transitionTo('/');
@@ -28,10 +27,9 @@ export default Route.extend({
         };
 
         return hash({
-            search: store.queryRecord('search', data),
-        }).then((res) => {
-            debugger;
-        });
+            genres: this.store.findAll('genre'),
+            movies: this.store.query('movie', data),
+          }).then(x => x.movies);
 
         return $.ajax({
             method: "GET",
