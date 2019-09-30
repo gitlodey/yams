@@ -2,6 +2,7 @@
     <Input @value={{this.value}} class="form-control" placeholder="Search movie" @enter={{action "enterHandler"}} />
 
     <div class="input-group-append">
-        {{#link-to "search"  (query-params query=this.value page="1") class="btn btn-outline-secondary" tagName="button"}}Search{{/link-to}}
+        {{#link-to "search"  (query-params query=this.value page="1") class="btn btn-outline-secondary"
+                   tagName="button"}}Search{{/link-to}}
     </div>
 </div>

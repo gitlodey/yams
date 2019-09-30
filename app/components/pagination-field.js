@@ -3,15 +3,15 @@ import {computed} from '@ember/object';
 
 export default Component.extend({
 
-    previousPage: computed('currentPage', function() {
+    previousPage: computed('currentPage', function () {
         return this.currentPage > 1 ? this.currentPage - 1 : this.currentPage;
     }),
 
-    nextPage: computed('currentPage', function() {
+    nextPage: computed('currentPage', function () {
         return this.currentPage < this.totalPages ? this.currentPage + 1 : this.totalPages;
     }),
 
-    pagesLabels: computed('currentPage', function() {
+    pagesLabels: computed('currentPage', function () {
         let pagesLabels = [];
 
         for (let i = -2; i <= 2; i++) {

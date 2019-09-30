@@ -1,10 +1,10 @@
 {{component 'search-field' search=( action "searchMovie")}}
 
 {{#if model.isMultiplePages}}
-    {{component 'pagination-field' 
-        currentPage=model.currentPage 
-        totalPages=model.totalPages
-        changePage=( action 'changePage')
+    {{component 'pagination-field'
+                currentPage=model.currentPage
+                totalPages=model.totalPages
+                changePage=( action 'changePage')
     }}
 {{/if}}
 
@@ -17,9 +17,9 @@
 </div>
 
 {{#if model.isMultiplePages}}
-    {{component 'pagination-field' 
-        currentPage=model.currentPage 
-        totalPages=model.totalPages
-        changePage=( action 'changePage')
+    {{component 'pagination-field'
+                currentPage=model.currentPage
+                totalPages=model.totalPages
+                changePage=( action 'changePage')
     }}
 {{/if}}

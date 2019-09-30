@@ -25,10 +25,10 @@ export default Route.extend({
         }
 
         return $.ajax({
-                method: "GET",
-                url: this.url,
-                data
-            })
+            method: "GET",
+            url: this.url,
+            data
+        })
             .then((res) => {
                 return {
                     movies: res.results,
