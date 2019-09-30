@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 export default Route.extend({
     url: 'https://api.themoviedb.org/3/search/movie',
@@ -14,6 +15,8 @@ export default Route.extend({
     },
 
     model(params) {
+        const store = this.get('store');
+
         if (!params.query) {
             this.transitionTo('/');
         }
@@ -24,6 +27,11 @@ export default Route.extend({
             page: params.page ? params.page : 1,
         };
 
+        return hash({
+            search: store.queryRecord('search', data),
+        }).then((res) => {
+            debugger;
+        });
 
         return $.ajax({
             method: "GET",
