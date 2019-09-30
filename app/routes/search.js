@@ -18,11 +18,12 @@ export default Route.extend({
             this.transitionTo('/');
         }
 
-        let data = {
+        const data = {
             api_key: this.apiKey,
             query: params.query,
             page: params.page ? params.page : 1,
-        }
+        };
+
 
         return $.ajax({
             method: "GET",
@@ -30,6 +31,9 @@ export default Route.extend({
             data
         })
             .then((res) => {
+                if (res.success === false) {
+                    this.transitionTo('/');
+                }
                 return {
                     movies: res.results,
                     currentPage: res.page,
@@ -38,7 +42,7 @@ export default Route.extend({
                 };
             })
             .catch((e) => {
-                console.log('error', e);
+                throw new Error(e);
                 this.transitionTo('/');
             });
     },
