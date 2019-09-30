@@ -20,7 +20,6 @@ export default Component.extend({
             if (label > 0 && label <= this.totalPages) {
                 pagesLabels.push(label);
             }
-            
         }
 
         return pagesLabels;

@@ -14,7 +14,6 @@ export default Route.extend({
     },
 
     model(params) {
-        console.log('params', params);
         if (!params.query) {
             this.transitionTo('/');
         }
@@ -22,25 +21,25 @@ export default Route.extend({
         let data = {
             api_key: this.apiKey,
             query: params.query,
-            page: params.page ? params.page: 1,
+            page: params.page ? params.page : 1,
         }
-        
+
         return $.ajax({
-            method: "GET",
-            url: this.url,
-            data
-          })
-        .then((res) => { 
-            return {
-                movies: res.results,
-                currentPage: res.page,
-                isMultiplePages: res.total_pages > 1,
-                totalPages: res.total_pages,
-            };
-        })
-        .catch((e) => {
-            console.log('error', e);
-            this.transitionTo('/');
-        });
+                method: "GET",
+                url: this.url,
+                data
+            })
+            .then((res) => {
+                return {
+                    movies: res.results,
+                    currentPage: res.page,
+                    isMultiplePages: res.total_pages > 1,
+                    totalPages: res.total_pages,
+                };
+            })
+            .catch((e) => {
+                console.log('error', e);
+                this.transitionTo('/');
+            });
     },
 });

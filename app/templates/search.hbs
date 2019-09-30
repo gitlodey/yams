@@ -11,7 +11,7 @@
 <div class="card-columns card-container">
     {{#if model.movies}}
         {{#each model.movies as |movie|}}
-            {{component 'movie-card' item=movie clickOnCard=(action 'clickHandler')}}
+            {{component 'movie-card' movie=movie clickOnCard=(action 'openMoviePage')}}
         {{/each}}
     {{/if}}
 </div>

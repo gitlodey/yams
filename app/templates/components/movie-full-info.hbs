@@ -1,5 +1,5 @@
-<div class="card" style="width: 100%;">
-  <img class="card-img-top" src="{{movieImg}}" alt="{{movie.title}}">
+<div class="card">
+  <img class="card-img-top" src={{movieImg}} alt={{movie.title}}>
   <div class="card-body">
     <h5 class="card-title">{{movie.title}} ({{movie.year}})</h5>
     <p class="card-text">{{movie.overview}}</p>
@@ -8,7 +8,7 @@
                     @numStars=10
                     @anyPercent=true
                     @readOnly=true
-                    @fillColor='#000' />
+                    @fillColor="#000" />
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
@@ -20,20 +20,20 @@
     <li class="list-group-item">
       Genres: 
       {{#each movie.genres as |genre|}}
-          <span class="badge badge-info">{{genre.name}}</span>
-          {{/each}}
+        <span class="badge badge-info">{{genre.name}}</span>
+      {{/each}}
     </li>
     <li class="list-group-item">Runtime: {{#if movie.runtime.hours}}{{movie.runtime.hours}}h {{/if}}{{movie.runtime.minutes}}m</li>
-    {{#if movie.budget}}<li class="list-group-item">Budget:{{movie.budget}}</li>{{/if}}
-    {{#if movie.revenue}}<li class="list-group-item">Revenue: ${{movie.revenue}}</li>{{/if}}
+    {{#if movie.budget}}<li class="list-group-item">Budget: {{movie.budget}}</li>{{/if}}
+    {{#if movie.revenue}}<li class="list-group-item">Revenue: {{movie.revenue}}</li>{{/if}}
     {{#if movie.tagline}}<li class="list-group-item">Tagline: {{movie.tagline}}</li>{{/if}}
 
     {{#if movie.production_companies}}
       <li class="list-group-item">
         Production companies: 
         {{#each movie.production_companies as |company|}}
-            <span class="badge badge-info">{{company.name}}</span>
-            {{/each}}
+          <span class="badge badge-info">{{company.name}}</span>
+        {{/each}}
       </li>
     {{/if}}
 
@@ -41,10 +41,10 @@
       <li class="list-group-item">
         Production counrties: 
         {{#each movie.production_countries as |countrie|}}
-            <span class="badge badge-info">{{countrie.name}}</span>
-            {{/each}}
+          <span class="badge badge-info">{{countrie.name}}</span>
+        {{/each}}
       </li>
     {{/if}}
-    {{#if movie.homepage}}<li class="list-group-item">Homepage: <a href="{{movie.homepage}}" target="_blank">{{movie.homepage}}</a></li>{{/if}}
+    {{#if movie.homepage}}<li class="list-group-item">Homepage: <a href={{movie.homepage}} target="_blank" rel="noopener">{{movie.homepage}}</a></li>{{/if}}
   </ul>
 </div>

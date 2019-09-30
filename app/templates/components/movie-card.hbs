@@ -1,7 +1,7 @@
 <div class="card" onclick={{action 'clickHandler'}}>
-  <img class="card-img-top" src="{{this.posterUrl}}" alt="Card image cap">
+  <img class="card-img-top" src={{this.posterUrl}} alt={{movie.title}}>
   <div class="card-header">
-    {{item.title}}
+    {{movie.title}}
   </div>
   
   <div class="card-footer">
