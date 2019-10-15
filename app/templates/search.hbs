@@ -1,25 +1,25 @@
 {{component 'search-field' search=( action "searchMovie")}}
 
-{{#if model.isMultiplePages}}
+{{#if (gt model.meta.totalPages 1)}}
     {{component 'pagination-field'
-                currentPage=model.currentPage
-                totalPages=model.totalPages
+                currentPage=model.meta.page
+                totalPages=model.meta.totalPages
                 changePage=( action 'changePage')
     }}
 {{/if}}
 
 <div class="card-columns card-container">
-    {{#if model.movies}}
-        {{#each model.movies as |movie|}}
+    {{#if model}}
+        {{#each model as |movie|}}
             {{component 'movie-card' movie=movie clickOnCard=(action 'openMoviePage')}}
         {{/each}}
     {{/if}}
 </div>
 
-{{#if model.isMultiplePages}}
+{{#if (gt model.meta.totalPages 1)}}
     {{component 'pagination-field'
-                currentPage=model.currentPage
-                totalPages=model.totalPages
+                currentPage=model.meta.page
+                totalPages=model.meta.totalPages
                 changePage=( action 'changePage')
     }}
 {{/if}}
