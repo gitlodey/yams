@@ -1,6 +1,6 @@
 # yams
 
-Фронтенд для [themoviedb api](https://developers.themoviedb.org). Написан на [Ember](https://github.com/emberjs/ember.js)
+Фронтенд для [themoviedb api](https://developers.themoviedb.org/3/getting-started/introduction). Написан на [Ember](https://github.com/emberjs/ember.js)
 
 
 ## Prerequisites
