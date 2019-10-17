@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
 
 export default Route.extend({
     currencyFormatter(currency) {
@@ -13,6 +14,21 @@ export default Route.extend({
 
         const url = `https://api.themoviedb.org/3/movie/${params.movie_id}`;
         const apiKey = '72b56103e43843412a992a8d64bf96e9';
+
+      return hash({
+        genres: this.store.findAll('genre'),
+        //languages: this.store.findAll('language'),
+        movie: this.store.findRecord('movie-full', params.movie_id),
+        companies: this.store.peekAll('company'),
+        countries: this.store.peekAll('country'),
+        languages: this.store.peekAll('language'),
+      }).then((response) => {
+        //debugger
+        return response//.movie;
+      })
+      .catch((e) => {
+        throw new Error(e);
+      });
 
         return $.ajax({
             method: "GET",

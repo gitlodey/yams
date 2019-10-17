@@ -8,7 +8,6 @@ export default Model.extend({
   budget: attr('number'),
   genres: hasMany('genre'),
   homepage: attr('string'),
-  id: attr('number'),
   imdb_id: attr('string'),
   original_language: attr('string'),
   original_title: attr('string'),

@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
 
 export default Route.extend({
-    
+
     queryParams: {
         query: {
             refreshModel: true
@@ -25,6 +25,7 @@ export default Route.extend({
 
         return hash({
             genres: this.store.findAll('genre'),
+            //languages: this.store.findAll('language'),
             movies: this.store.query('movie', data),
           }).then(x => x.movies);
     },
