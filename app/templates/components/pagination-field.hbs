@@ -1,31 +1,43 @@
 <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <span class="page-link">Page {{currentPage}} of {{totalPages}}</span>
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <span class="page-link">Page {{currentPage}} of {{totalPages}}</span>
+    </li>
+
+    {{#if (gt currentPage 1)}}
+      <li class="page-item">
+        <span class="page-link"
+              role="button"
+              onclick={{action "clickHandler" this.previousPage}}>
+          Previous
+        </span>
+      </li>
+    {{/if}}
+
+    {{#each this.pagesLabels as |page|}}
+      {{#if (eq page currentPage)}}
+        <li class="page-item active"
+            role="button"
+            onclick={{action "clickHandler" page}}>
+          <span class="page-link">{{page}}</span>
         </li>
+      {{else}}
+        <li class="page-item"
+            role="button"
+            onclick={{action "clickHandler" page}}>
+          <span class="page-link">{{page}}</span>
+        </li>
+      {{/if}}
+    {{/each}}
 
-        {{#if (gt currentPage 1)}}
-            <li class="page-item">
-                <span class="page-link" onclick={{action 'clickHandler' this.previousPage}}>Previous</span>
-            </li>
-        {{/if}}
-
-        {{#each this.pagesLabels as |page|}}
-            {{#if (eq page currentPage)}}
-                <li class="page-item active" onclick={{action 'clickHandler' page}}>
-                    <span class="page-link">{{page}}</span>
-                </li>
-            {{else}}
-                <li class="page-item" onclick={{action 'clickHandler' page}}>
-                    <span class="page-link">{{page}}</span>
-                </li>
-            {{/if}}
-        {{/each}}
-
-        {{#if (lt currentPage totalPages)}}
-            <li class="page-item">
-                <span class="page-link" onclick={{action 'clickHandler' this.nextPage}}>Next</span>
-            </li>
-        {{/if}}
-    </ul>
+    {{#if (lt currentPage totalPages)}}
+      <li class="page-item">
+        <span class="page-link"
+              role="button"
+              onclick={{action "clickHandler" this.nextPage}}>
+          Next
+        </span>
+      </li>
+    {{/if}}
+  </ul>
 </nav>

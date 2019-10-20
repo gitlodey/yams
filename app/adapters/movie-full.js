@@ -5,7 +5,7 @@ export default DS.JSONAPIAdapter.extend({
   apiKey: '72b56103e43843412a992a8d64bf96e9',
   namespace: '',
 
-  buildURL(modelName, id, snapshot, requestType, query) {
+  buildURL(modelName, id) {
     return `${this.host}${id}?api_key=${this.apiKey}`;
   },
 });

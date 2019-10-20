@@ -2,7 +2,7 @@ import DS from 'ember-data';
 import {singularize} from 'ember-inflector';
 
 export default DS.JSONAPISerializer.extend({
-  normalizeArrayResponse (store, primaryModelClass, payload, id, requestType) {
+  normalizeArrayResponse (store, primaryModelClass, payload) {
 
       const meta = {
         page: payload.page,
@@ -23,7 +23,7 @@ export default DS.JSONAPISerializer.extend({
         meta,
       }
   },
-  keyForRelationship(key, typeClass, method) {
+  keyForRelationship(key) {
     return `${singularize(key)}_ids`;
   }
 });

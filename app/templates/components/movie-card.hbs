@@ -1,10 +1,18 @@
-<div class="card" onclick={{action 'clickHandler'}}>
-    <img class="card-img-top" src={{this.posterUrl}} alt={{movie.title}}>
-    <div class="card-header">
-        {{movie.title}}
-    </div>
+<div class="card"
+     role="button"
+     onclick={{action "clickHandler"}}>
 
-    <div class="card-footer">
-        <small class="text-muted">Release year: {{this.releaseYear}}</small>
-    </div>
+  <img class="card-img-top"
+       src={{this.posterUrl}}
+       alt={{movie.title}}>
+
+  <div class="card-header">
+    {{movie.title}}
+  </div>
+
+  <div class="card-footer">
+    <small class="text-muted">
+      Release year: {{this.releaseYear}}
+    </small>
+  </div>
 </div>

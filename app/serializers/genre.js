@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-    normalizeArrayResponse (store, primaryModelClass, payload, id, requestType) {
+    normalizeArrayResponse (store, primaryModelClass, payload) {
         return {
             data: payload.genres.map((genre) => {
                 return {

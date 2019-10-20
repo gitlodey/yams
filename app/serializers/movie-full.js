@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-  normalizeResponse (store, primaryModelClass, payload, id, requestType) {
+  normalizeResponse (store, primaryModelClass, payload, id) {
 
     const correctMovie = Object
       .keys(payload)
@@ -21,8 +21,6 @@ export default DS.JSONAPISerializer.extend({
       type: 'movie-full',
       attributes: correctMovie
     };
-
-    console.log(movie);
 
     const includedCountries = payload.production_countries.map((country, index) => {
       return {
