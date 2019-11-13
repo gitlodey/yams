@@ -8,6 +8,7 @@ export default DS.JSONAPISerializer.extend({
       .filter((key) => {
         const triggers = [
           'id',
+          'production_countries',
         ];
         return triggers.includes(key) === false;
       })
@@ -22,10 +23,10 @@ export default DS.JSONAPISerializer.extend({
       attributes: correctMovie
     };
 
-    const includedCountries = payload.production_countries.map((country, index) => {
+    const includedCountries = payload.production_countries.map((country) => {
       return {
         type: 'country',
-        id: index,
+        id: Math.round(Math.random() * 10000),
         attributes: {
           iso_3166_1: country.iso_3166_1,
           name: country.name,
@@ -48,7 +49,7 @@ export default DS.JSONAPISerializer.extend({
     const includedLanguages = payload.spoken_languages.map((language, index) => {
       return {
         type: 'language',
-        id: index,
+        id: Math.round(Math.random() * 10000),
         attributes: {
           iso_639_1: language.iso_639_1,
           name: language.name,
@@ -61,6 +62,12 @@ export default DS.JSONAPISerializer.extend({
       ...includedCompanies,
       ...includedLanguages,
     ];
+
+    let countryIds = includedCountries
+      .map((country) => country.id)
+    ;
+
+    movie.attributes.countries = countryIds;
 
     return {
       data: movie,

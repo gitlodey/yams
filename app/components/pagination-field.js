@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import {computed} from '@ember/object';
 
 export default Component.extend({
+    tagName: '',
 
     previousPage: computed('currentPage', function () {
         return this.currentPage > 1 ? this.currentPage - 1 : this.currentPage;

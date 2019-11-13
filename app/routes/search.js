@@ -27,6 +27,9 @@ export default Route.extend({
             genres: this.store.findAll('genre'),
             //languages: this.store.findAll('language'),
             movies: this.store.query('movie', data),
-          }).then(x => x.movies);
+          })
+          .then(x => x.movies)
+          .catch(e => console.error(e))
+        ;
     },
 });

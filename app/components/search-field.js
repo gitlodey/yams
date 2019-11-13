@@ -6,7 +6,7 @@ export default Component.extend({
 
     didInsertElement() {
         if (this.autoFocus) {
-            this.$().find('input').focus();
+          
         }
     },
 
