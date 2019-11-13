@@ -38,7 +38,7 @@ export default Model.extend({
   vote_count: attr('number'),
 
   releaseYear: computed('release_date', function() {
-    return this.release_date.split('-')[0];
+    return new Date(this.release_date).getFullYear();
   }),
 
   revenueFormated: computed('revenue', function() {
