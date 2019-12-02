@@ -1,17 +1,13 @@
 import Route from '@ember/routing/route';
-import { hash } from 'rsvp';
 
 export default Route.extend({
-    model(params) {
-      return hash({
-        genres: this.store.findAll('genre'),
-        movie: this.store.findRecord('movie-full', params.movie_id),
-        companies: this.store.peekAll('company'),
-        countries: this.store.peekAll('country'),
-        languages: this.store.peekAll('language'),
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+  async model(params) {
+    return {
+      genres: await this.store.findAll('genre'),
+      movie: await this.store.findRecord('movie-full', params.movie_id),
+      companies: await this.store.findAll('company'),
+      countries: await this.store.findAll('country'),
+      languages: await this.store.findAll('language'),
     }
+  },
 });

@@ -1,4 +1,7 @@
-{{component "search-field" search=( action "searchMovie")}}
+{{component "search-field"
+            search=( action "searchMovie")
+            value=query
+}}
 
 {{#if (gt model.meta.totalPages 1)}}
   {{component "pagination-field"
