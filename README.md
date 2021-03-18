@@ -1,4 +1,4 @@
-# yams
+# YAMS (Yet Another Movie Search)
 
 Фронтенд для [themoviedb api](https://developers.themoviedb.org/3/getting-started/introduction). Написан на [Ember](https://github.com/emberjs/ember.js)
 
